@@ -1,6 +1,6 @@
 import './ContactList.css'
 
-function ContactList({ chats, selectedChatId, onSelectChat, search, onSearchChange }) {
+function ContactList({ chats, selectedChatId, onSelectChat, search, onSearchChange, onCreateChat }) {
   return (
     <aside className="chat-sidebar">
       <div className="sidebar-top">
@@ -8,6 +8,9 @@ function ContactList({ chats, selectedChatId, onSelectChat, search, onSearchChan
           <h2>Chats</h2>
           <p>Busca o selecciona una conversación</p>
         </div>
+        <button type="button" className="new-chat-button" onClick={onCreateChat}>
+          + Nuevo chat
+        </button>
       </div>
 
       <div className="sidebar-search">

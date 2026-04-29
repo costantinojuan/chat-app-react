@@ -8,6 +8,10 @@
 
 .sidebar-top {
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .sidebar-top h2 {
@@ -22,6 +26,22 @@
 
 .sidebar-search {
   margin-bottom: 18px;
+}
+
+.new-chat-button {
+  border: 1px solid #667eea;
+  background: #667eea;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.new-chat-button:hover {
+  background: #5363d6;
+  transform: translateY(-1px);
 }
 
 .sidebar-search input {
@@ -127,6 +147,159 @@
 
 .status-indicator.offline {
   background: #dcdde1;
+}
+
+/* Tablet (576px - 991px) */
+@media (max-width: 991px) {
+  .chat-sidebar {
+    padding: 16px 12px;
+    border-right: none;
+    border-bottom: 1px solid #e8ecf3;
+    max-height: 280px;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .sidebar-top {
+    margin-bottom: 12px;
+    gap: 8px;
+  }
+
+  .sidebar-top h2 {
+    font-size: 16px;
+  }
+
+  .sidebar-top p {
+    font-size: 12px;
+  }
+
+  .sidebar-search {
+    margin-bottom: 12px;
+  }
+
+  .sidebar-search input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .contact-item {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .contact-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .contact-name {
+    font-size: 13px;
+  }
+
+  .contact-preview {
+    font-size: 12px;
+  }
+
+  .new-chat-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Mobile (< 576px) */
+@media (max-width: 575px) {
+  .chat-sidebar {
+    padding: 12px 10px;
+    border-right: none;
+    border-bottom: 1px solid #e8ecf3;
+    max-height: 140px;
+    min-height: auto;
+    flex-shrink: 0;
+  }
+
+  .sidebar-top {
+    margin-bottom: 8px;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .sidebar-top h2 {
+    font-size: 13px;
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .sidebar-top p {
+    display: none;
+  }
+
+  .sidebar-search {
+    margin-bottom: 8px;
+    display: none;
+  }
+
+  .sidebar-search input {
+    padding: 8px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  .contact-list {
+    gap: 6px;
+    max-height: 80px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    padding-right: 4px;
+  }
+
+  .contact-list::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .contact-item {
+    padding: 6px;
+    gap: 4px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 60px;
+  }
+
+  .contact-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .contact-body {
+    min-width: auto;
+    max-width: 55px;
+  }
+
+  .contact-name {
+    font-size: 10px;
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-preview {
+    display: none;
+  }
+
+  .contact-meta {
+    display: none;
+  }
+
+  .new-chat-button {
+    padding: 6px 8px;
+    font-size: 11px;
+    width: auto;
+  }
 }
 
 .contact-status {

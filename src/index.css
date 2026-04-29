@@ -15,10 +15,40 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 16px;
 }
 
 #root {
   width: 100%;
   max-width: 1120px;
+  height: 90vh;
+  max-height: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 575px) {
+  body {
+    padding: 8px;
+    align-items: stretch;
+    min-height: 100vh;
+  }
+
+  #root {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  body {
+    padding: 12px;
+    align-items: stretch;
+  }
+
+  #root {
+    height: 100vh;
+    max-height: none;
+  }
 }

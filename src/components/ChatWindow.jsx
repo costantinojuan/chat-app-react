@@ -12,6 +12,7 @@ function ChatWindow({
   search,
   onSearchChange,
   onSendMessage,
+  onCreateChat,
 }) {
   const messagesEndRef = useRef(null)
 
@@ -31,6 +32,7 @@ function ChatWindow({
         onSelectChat={onSelectChat}
         search={search}
         onSearchChange={onSearchChange}
+        onCreateChat={onCreateChat}
       />
 
       <div className="chat-main">

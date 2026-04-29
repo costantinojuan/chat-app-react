@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ChatWindow from './components/ChatWindow'
 import './App.css'
 
 const initialChats = [
   {
     id: 1,
-    name: 'Aiden Chavez',
+    name: 'Carlos Ramirez',
     status: 'online',
     lastSeen: 'Última vez hace 2 horas',
     messages: [
@@ -31,7 +31,7 @@ const initialChats = [
   },
   {
     id: 2,
-    name: 'Vincent Porter',
+    name: 'Pedro Picapiedra',
     status: 'offline',
     lastSeen: 'Hace 7 mins',
     messages: [
@@ -51,7 +51,7 @@ const initialChats = [
   },
   {
     id: 3,
-    name: 'Mike Thomas',
+    name: 'Miguel Angel',
     status: 'online',
     lastSeen: 'En línea',
     messages: [
@@ -67,11 +67,17 @@ const initialChats = [
         sender: 'user',
         timestamp: new Date(Date.now() - 7140000),
       },
+      {
+        id: 3,
+        text: 'Seguro?',
+        sender: 'bot',
+        timestamp: new Date(Date.now() - 7140000),
+      },
     ],
   },
   {
     id: 4,
-    name: 'Christian Kelly',
+    name: 'Robin Williams',
     status: 'offline',
     lastSeen: 'Hace 10 horas',
     messages: [
@@ -85,7 +91,7 @@ const initialChats = [
   },
   {
     id: 5,
-    name: 'Monica Ward',
+    name: 'Alfredo Romano',
     status: 'online',
     lastSeen: 'En línea',
     messages: [
@@ -103,6 +109,7 @@ function App() {
   const [chats, setChats] = useState(initialChats)
   const [selectedChatId, setSelectedChatId] = useState(initialChats[0].id)
   const [search, setSearch] = useState('')
+  const [replyChatId, setReplyChatId] = useState(null)
 
   const activeChat = chats.find((chat) => chat.id === selectedChatId) || chats[0]
   const visibleChats = chats.filter((chat) =>
@@ -128,10 +135,40 @@ function App() {
       })
     )
 
-    setTimeout(() => {
+    setReplyChatId(selectedChatId)
+  }
+
+  const handleCreateChat = () => {
+    const name = window.prompt('Ingresa el nombre del nuevo chat:')?.trim()
+    if (!name) return
+
+    const nextId = chats.reduce((max, chat) => Math.max(max, chat.id), 0) + 1
+    const newChat = {
+      id: nextId,
+      name,
+      status: 'online',
+      lastSeen: 'En línea',
+      messages: [
+        {
+          id: 1,
+          sender: 'bot',
+          timestamp: new Date(),
+        },
+      ],
+    }
+
+    setChats((prevChats) => [newChat, ...prevChats])
+    setSelectedChatId(nextId)
+    setSearch('')
+  }
+
+  useEffect(() => {
+    if (!replyChatId) return
+
+    const timeout = setTimeout(() => {
       setChats((prevChats) =>
         prevChats.map((chat) => {
-          if (chat.id !== selectedChatId) return chat
+          if (chat.id !== replyChatId) return chat
 
           const botMessage = {
             id: chat.messages.length + 2,
@@ -146,8 +183,11 @@ function App() {
           }
         })
       )
+      setReplyChatId(null)
     }, 500)
-  }
+
+    return () => clearTimeout(timeout)
+  }, [replyChatId])
 
   return (
     <div className="app">
@@ -159,6 +199,7 @@ function App() {
         search={search}
         onSearchChange={setSearch}
         onSendMessage={handleSendMessage}
+        onCreateChat={handleCreateChat}
       />
     </div>
   )

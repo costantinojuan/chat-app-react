@@ -2,9 +2,7 @@
   display: grid;
   grid-template-columns: 320px 1fr;
   width: 100%;
-  max-width: 1100px;
-  height: 90vh;
-  max-height: 760px;
+  height: 100%;
   background: white;
   border-radius: 24px;
   box-shadow: 0 25px 60px rgba(25, 39, 83, 0.18);
@@ -25,11 +23,14 @@
   padding: 24px 28px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  flex-wrap: wrap;
+  min-height: 70px;
 }
 
 .chat-title-group h1 {
   font-size: 22px;
   margin-bottom: 6px;
+  word-break: break-word;
 }
 
 .chat-title-group p {
@@ -52,6 +53,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
 }
 
 .chat-actions button:hover {
@@ -59,14 +61,96 @@
   background: rgba(255, 255, 255, 0.28);
 }
 
-@media (max-width: 992px) {
+/* Tablet (576px - 991px) */
+@media (max-width: 991px) {
   .chat-window {
     grid-template-columns: 1fr;
-    height: auto;
-    max-height: none;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0;
+  }
+
+  .chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    overflow: hidden;
   }
 
   .chat-header {
-    flex-wrap: wrap;
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .chat-title-group h1 {
+    font-size: 16px;
+  }
+
+  .chat-title-group p {
+    font-size: 12px;
+  }
+
+  .chat-actions button {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 575px) {
+  .chat-window {
+    grid-template-columns: 1fr;
+    height: auto;
+    border-radius: 12px;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .chat-main {
+    min-height: 350px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-header {
+    padding: 10px 12px;
+    gap: 6px;
+    min-height: 50px;
+    max-height: 60px;
+    overflow: hidden;
+  }
+
+  .chat-title-group {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .chat-title-group h1 {
+    font-size: 14px;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chat-title-group p {
+    display: none;
+  }
+
+  .chat-actions {
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .chat-actions button {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
   }
 }

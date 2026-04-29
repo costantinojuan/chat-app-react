@@ -33,3 +33,19 @@
   color: #999;
   font-style: italic;
 }
+
+/* Tablet (576px - 991px) */
+@media (max-width: 991px) {
+  .message-list {
+    padding: 16px;
+    gap: 10px;
+  }
+}
+
+/* Mobile (< 576px) */
+@media (max-width: 575px) {
+  .message-list {
+    padding: 12px;
+    gap: 8px;
+  }
+}

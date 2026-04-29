@@ -58,3 +58,49 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* Tablet (576px - 991px) */
+@media (max-width: 991px) {
+  .input-box {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .message-input {
+    padding: 10px 14px;
+    font-size: 13px;
+    min-height: 40px;
+    max-height: 80px;
+  }
+
+  .send-button {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Mobile (< 576px) */
+@media (max-width: 575px) {
+  .input-box {
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .message-input {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-height: 36px;
+    max-height: 60px;
+    border-radius: 20px;
+  }
+
+  .send-button {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .message-input::placeholder {
+    font-size: 12px;
+  }
+}
